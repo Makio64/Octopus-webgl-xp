@@ -10,7 +10,7 @@ Octopus = (function() {
   function Octopus(scene) {
     var geometry, i, _i;
     this.scene = scene;
-    for (i = _i = 0; _i < 14; i = _i += 1) {
+    for (i = _i = 0; _i < 16; i = _i += 1) {
       this.tentacle = new Tentacle();
       this.tentacle.mesh.rotation.x = Math.PI * 2 * Math.random();
       this.tentacle.mesh.rotation.y = Math.PI * 2 * Math.random();

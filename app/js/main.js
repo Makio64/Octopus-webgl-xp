@@ -127,5 +127,6 @@ mainLoop = function() {
   stats.update();
   if (sceneController) {
     sceneController.update();
+    particles.update();
   }
 };

@@ -125,4 +125,5 @@ mainLoop = ->
 	stats.update()
 	if sceneController
 		sceneController.update()
+		particles.update()
 	return
