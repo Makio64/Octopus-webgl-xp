@@ -1,0 +1,36 @@
+{
+  "name": "template",
+  "author": "Florian Zumbrunn / David Ronai",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": "*",
+    "npm": "*"
+  },
+  "dependencies": {
+    "coffee-script": "*"
+  },
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-bower-install": "*",
+    "grunt-concurrent": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-coffee": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-contrib-cssmin": "*",
+    "grunt-contrib-imagemin": "*",
+    "grunt-contrib-jade": "*",
+    "grunt-contrib-stylus": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-express": "*",
+    "grunt-notify": "*",
+    "grunt-svgmin": "*",
+    "grunt-usemin": "*",
+    "load-grunt-tasks": "*",
+    "time-grunt": "*",
+    "grunt-newer": "^0.7.0",
+    "grunt-rev": "^0.1.0"
+  }
+}

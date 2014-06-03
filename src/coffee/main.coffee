@@ -11,8 +11,7 @@ sh 		= window.innerHeight
 
 tanFOV 	= undefined
 
-currentSection  	= undefined
-currentSectionType 	= undefined
+sceneController  	= undefined
 
 stats 				= undefined
 
@@ -21,7 +20,7 @@ scene 		= undefined
 renderer 	= undefined
 composer 	= undefined
 
-lines 		= undefined
+particles	= undefined
 
 # --------------------------------------------- ENTRY POINT
 
@@ -30,8 +29,12 @@ $(document).ready ->
 	preload()
 
 	$(window).resize ->
-		camera.setAspectRatio $(window).width() / $(window).height()
-		renderer.setSize $(window).width(), $(window).height()
+		w = $(window).width()
+		h = $(window).height()
+
+		camera.aspect = w / h
+		camera.updateProjectionMatrix();
+		renderer.setSize w, h
 	
 	return
 
@@ -42,7 +45,6 @@ preload = =>
 	objImage.onLoad = imagesLoaded()
 	objImage.src = "img/particle.png"
 	return
-
 
 # --------------------------------------------- CREATING STUFF
 
@@ -56,9 +58,10 @@ imagesLoaded = =>
 
 	if Detector.webgl
 		renderer = new THREE.WebGLRenderer(
+			alpha					: true
 			antialias 				: true			# antialiasing
-			precision 				: "highp" 		# shaders precision : highp mediump lowp
-			maxLights 				: 4 			# number of light max ( 1 ambient, 1 camera , 2 others )
+			precision 				: "mediump" 		# shaders precision : highp mediump lowp
+			maxLights 				: 0 			# number of light max ( 1 ambient, 1 camera , 2 others )
 			stencil 				: true			# ? :D
 			preserveDrawingBuffer 	: true 			# ? :D
 		)
@@ -70,10 +73,9 @@ imagesLoaded = =>
 
 	document.body.appendChild renderer.domElement
 	
-	lines = new Lines(camera, scene, renderer)
+	particles = new Particles(camera, scene, renderer)
 	
-	currentSection = new TestSection(camera, scene, renderer)
-	currentSectionType = "test"
+	sceneController = new SceneController(camera, scene, renderer)
 	
 	addStat()
 	addListener()
@@ -90,11 +92,9 @@ addStat = =>
 
 
 addListener = =>
-	if Modernizr.touch
-		document.addEventListener "touchstart", onDocumentTouchStart, false
-		document.addEventListener "touchmove", onDocumentTouchMove, false
-	else
-		document.addEventListener "mousemove", onDocumentMouseMove, false
+	document.addEventListener "touchstart", onDocumentTouchStart, false
+	document.addEventListener "touchmove", onDocumentTouchMove, false
+	document.addEventListener "mousemove", onDocumentMouseMove, false
 	return
 
 
@@ -123,7 +123,6 @@ onDocumentTouchMove = (event) =>
 mainLoop = ->
 	requestAnimationFrame mainLoop
 	stats.update()
-	lines.update()
-	if currentSection
-		currentSection.update()
+	if sceneController
+		sceneController.update()
 	return

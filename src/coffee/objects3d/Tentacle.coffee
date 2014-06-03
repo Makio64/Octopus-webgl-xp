@@ -6,7 +6,7 @@ class Tentacle
 	materialIndex 		: 1
 
 	nodes 				: []
-	numNodes 			: 30
+	numNodes 			: 24
 
 	mesh 				: null
 
@@ -81,7 +81,7 @@ class Tentacle
 
 
 		@mesh.geometry.verticesNeedUpdate = true	# need for update the geometry
-		@mesh.geometry.computeBoundingSphere() 		# need to know if it's inside the viewport
+		# @mesh.geometry.computeBoundingSphere() 		# need to know if it's inside the viewport
 		@mesh.geometry.normalsNeedUpdate = true		# need for correct lighting
 		@mesh.geometry.computeVertexNormals()		# need for correct lighting 
 		# @mesh.geometry.computeFaceNormals()			# need for correct lighting 

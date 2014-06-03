@@ -1,0 +1,173 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+body {
+  line-height: 1;
+  color: #000;
+  background: #fff;
+}
+ol,
+ul {
+  list-style: none;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+a img {
+  border: none;
+}
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+main {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  display: block;
+}
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+audio:not([controls]),
+[hidden] {
+  display: none;
+}
+html {
+  height: 100%;
+  min-height: 100%;
+}
+body {
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: #fff;
+  background-image: -moz--webkit-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -moz--moz-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -moz--o-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -moz--ms-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -moz-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -webkit--webkit-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -webkit--moz-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -webkit--o-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -webkit--ms-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -webkit-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -o--webkit-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -o--moz-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -o--o-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -o--ms-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -o-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -ms--webkit-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -ms--moz-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -ms--o-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -ms--ms-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -ms-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -webkit-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -moz-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -o-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: -ms-radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+  background-image: radial-gradient(50% 50%, ellipse closest-side, #d4f4f9, #cea7e2 100%);
+}
+#wrap {
+  padding: 0;
+  margin: 0;
+}
+canvas {
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}

@@ -1,23 +1,36 @@
-!!! 5
-html(lang='en')
-
+doctype html
+html(lang="en")
 	head
-		title The webgl Octopus by David Ronai
-		meta(charset='utf-8')
-		meta(name='description', content='David Ronai portfolio')
-		link(rel='Shortcut Icon', type='image/ico', href='img/favicon.png')
-		link(rel='stylesheet', href='css/main.css', type='text/css')
-		script(type='text/javascript', src='js/lib/modernizr2.6.2.min.js')
-
-	body
-	
-		script(type='text/javascript', src='js/lib/jquery/jquery.min.js')
+		meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
+		meta(name="viewport", content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width")
 		
-		script(type='text/javascript', src='js/lib/tweenlite/TweenLite.min.js')
+		meta(property="og:site_name", content="Makiopolis experiment")
+		meta(property="og:title", content="WebGL Octopus")
+		meta(property="og:description", content="An octopus")
+		meta(property="og:type", content="")
+		meta(property="og:url", content="")
+		meta(property="og:image", content="")
+				
+		title WebGL Octopus
+		// build:css css/main.css
+		link(rel='stylesheet', href='css/main.css')
+		// endbuild
+	body
 
-		script(type='text/javascript', src='js/lib/threejs/three.min.js')
-		script(type='text/javascript', src='js/lib/threejs/Stats.js')
-		script(type='text/javascript', src='js/lib/threejs/Detector.js')
-		script(type='text/javascript', src='js/lib/dat.gui.min.js')	
+		// build:js js/vendor.js
+		// bower:js
+		// endbower
+		// endbuild
 
+		script(type='text/javascript', src='js/vendors/Detector.js')
+		script(type='text/javascript', src='bower_components/stats.js/build/stats.min.js')
+
+		// build:js js/main.js
+		script(type='text/javascript', src='js/controllers/SceneController.js')
+		script(type='text/javascript', src='js/controllers/GUIController.js')
+		script(type='text/javascript', src='js/controllers/CameraController.js')
+		script(type='text/javascript', src='js/objects3d/Octopus.js')
+		script(type='text/javascript', src='js/objects3d/Tentacle.js')
+		script(type='text/javascript', src='js/objects3d/Particles.js')
 		script(type='text/javascript', src='js/main.js')
+		// endbuild

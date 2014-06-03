@@ -8,7 +8,7 @@ class Octopus
 
 	constructor:(@scene)->
 		
-		for i in [0...20] by 1
+		for i in [0...14] by 1
 			@tentacle = new Tentacle()
 			@tentacle.mesh.rotation.x = Math.PI*2*Math.random()
 			@tentacle.mesh.rotation.y = Math.PI*2*Math.random()
