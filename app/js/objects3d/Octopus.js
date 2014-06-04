@@ -8,30 +8,33 @@ Octopus = (function() {
   Octopus.prototype.scene = null;
 
   function Octopus(scene) {
-    var geometry, i, _i;
+    var geometry, i, tentacle, _i;
     this.scene = scene;
     for (i = _i = 0; _i < 16; i = _i += 1) {
-      this.tentacle = new Tentacle();
-      this.tentacle.mesh.rotation.x = Math.PI * 2 * Math.random();
-      this.tentacle.mesh.rotation.y = Math.PI * 2 * Math.random();
-      this.tentacle.mesh.rotation.z = Math.PI * 2 * Math.random();
-      this.scene.add(this.tentacle.mesh);
-      this.tentacles[i] = this.tentacle;
+      tentacle = new Tentacle();
+      tentacle.mesh.position = this.orbit(Math.PI * 2 * Math.random(), Math.PI * 2 * Math.random(), 100);
+      tentacle.mesh.lookAt(new THREE.Vector3(0, 0, 0));
+      this.scene.add(tentacle.mesh);
+      this.tentacles[i] = tentacle;
     }
-    geometry = new THREE.SphereGeometry(50);
+    geometry = new THREE.SphereGeometry(64);
     this.sphere = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
-      color: 0xFFFFFF
-    }));
-    this.scene.add(this.sphere);
-    geometry = new THREE.SphereGeometry(60);
-    this.sphere = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
-      color: 0xFFFFFF,
-      opacity: .2,
+      color: 0,
+      opacity: .9,
       transparent: true
     }));
     this.scene.add(this.sphere);
     return;
   }
+
+  Octopus.prototype.orbit = function(phi, theta, diameter) {
+    var p;
+    p = new THREE.Vector3();
+    p.x = diameter * Math.sin(phi) * Math.cos(theta);
+    p.z = diameter * Math.sin(phi) * Math.sin(theta);
+    p.y = diameter * Math.cos(phi);
+    return p;
+  };
 
   Octopus.prototype.update = function() {
     var tentacle, _i, _len, _ref;

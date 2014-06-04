@@ -37,6 +37,7 @@ class SceneController
 
 	addEvents:()->
 		window.addEventListener("mousedown", @onTouch, false)
+		window.addEventListener("touchstart", @onTouch, false)
 		return
 
 
@@ -47,6 +48,7 @@ class SceneController
 		@previousY = e.pageY
 		window.addEventListener("mouseup", @onRelease, false)
 		window.addEventListener("mousemove", @onMove, false)
+		window.addEventListener("touchmove", @onMove, false)
 		window.addEventListener("mouseleave", @onRelease, false)
 		$("body").get(0).style.cursor = "url(./img/cursor_close.png),auto"
 		return

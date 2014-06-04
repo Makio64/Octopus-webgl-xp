@@ -39,6 +39,7 @@ SceneController = (function() {
 
   SceneController.prototype.addEvents = function() {
     window.addEventListener("mousedown", this.onTouch, false);
+    window.addEventListener("touchstart", this.onTouch, false);
   };
 
   SceneController.prototype.onTouch = function(e) {
@@ -47,6 +48,7 @@ SceneController = (function() {
     this.previousY = e.pageY;
     window.addEventListener("mouseup", this.onRelease, false);
     window.addEventListener("mousemove", this.onMove, false);
+    window.addEventListener("touchmove", this.onMove, false);
     window.addEventListener("mouseleave", this.onRelease, false);
     $("body").get(0).style.cursor = "url(./img/cursor_close.png),auto";
   };

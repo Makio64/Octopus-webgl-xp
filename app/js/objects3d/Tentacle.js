@@ -5,11 +5,9 @@ Tentacle = (function() {
 
   Tentacle.prototype.materials = [];
 
-  Tentacle.prototype.materialIndex = 1;
+  Tentacle.prototype.materialIndex = 0;
 
-  Tentacle.prototype.nodes = [];
-
-  Tentacle.prototype.numNodes = 24;
+  Tentacle.prototype.numNodes = 10;
 
   Tentacle.prototype.mesh = null;
 
@@ -19,26 +17,13 @@ Tentacle = (function() {
 
   Tentacle.prototype.reduction = 1.0;
 
-  Tentacle.prototype.speed = 0.1;
-
-  Tentacle.prototype.friction = 0.95;
-
-  Tentacle.prototype.muscleRange = 30 * Math.PI / 180;
-
   Tentacle.prototype.frequency = 0.08;
 
-  Tentacle.prototype.vector = 0;
-
-  Tentacle.prototype.angle = 0;
-
   Tentacle.prototype.count = 0;
-
-  Tentacle.prototype.forceAngle = 0 * Math.PI / 180;
 
   Tentacle.prototype.segmentsX = 11;
 
   function Tentacle() {
-    this.createNodes();
     this.createMesh();
     return;
   }
@@ -47,7 +32,7 @@ Tentacle = (function() {
     var geometry;
     this.materials.push(new THREE.MeshBasicMaterial({
       wireframe: true,
-      color: 0xBBBBBB
+      color: 0
     }));
     this.materials.push(new THREE.MeshNormalMaterial());
     this.materials.push(new THREE.MeshPhongMaterial({
@@ -57,61 +42,27 @@ Tentacle = (function() {
       color: 0x333333
     }));
     geometry = new THREE.CylinderGeometry(this.headRadius, 0, this.numNodes * 10, this.segmentsX - 1, this.numNodes - 1, true);
-    this.mesh = new THREE.Mesh(geometry, this.materials[2]);
-  };
-
-  Tentacle.prototype.createNodes = function() {
-    var i, _i, _ref;
-    for (i = _i = 0, _ref = this.numNodes; _i < _ref; i = _i += 1) {
-      this.nodes.push({
-        x: 0,
-        y: 0,
-        vx: 0,
-        vy: 0
-      });
-    }
+    this.mesh = new THREE.Mesh(geometry, this.materials[this.materialIndex]);
   };
 
   Tentacle.prototype.updateMesh = function() {
-    var i, j, ondulationX, ondulationZ, radius, vertice, vertices, _i, _j, _ref, _ref1;
+    var M_2PI, M_count_10, angle, i, j, ondulation, radius, vertice, vertices, _i, _j, _ref, _ref1;
     vertices = this.mesh.geometry.vertices;
+    M_2PI = Math.PI * 2;
+    M_count_10 = this.count / 10;
     for (i = _i = 0, _ref = this.numNodes; _i < _ref; i = _i += 1) {
       for (j = _j = 0, _ref1 = this.segmentsX; _j < _ref1; j = _j += 1) {
         vertice = vertices[i * this.segmentsX + j];
-        vertice.y = i * this.girth;
-        ondulationX = Math.cos(i / (this.numNodes - 1) * Math.PI * 2 + this.count) * 10;
-        ondulationZ = Math.cos(i / (this.numNodes - 1) * Math.PI * 2 + this.count) * 10;
-        radius = this.headRadius - this.headRadius * (i / this.numNodes) * this.reduction;
-        vertice.x = Math.cos(j / 10 * Math.PI * 2 + this.count / 10) * radius + ondulationX;
-        vertice.z = Math.sin(j / 10 * Math.PI * 2 + this.count / 10) * radius + ondulationZ;
+        vertice.z = i * this.girth;
+        ondulation = Math.cos(i / (this.numNodes - 1) * M_2PI + this.count) * 10;
+        radius = this.headRadius - this.headRadius * (1 - i / (this.numNodes - 1)) * this.reduction;
+        angle = j / 10 * M_2PI + M_count_10;
+        vertice.y = Math.cos(angle) * radius + ondulation;
+        vertice.x = Math.sin(angle) * radius + ondulation;
       }
     }
     this.mesh.geometry.verticesNeedUpdate = true;
     this.mesh.geometry.normalsNeedUpdate = true;
-    this.mesh.geometry.computeVertexNormals();
-    this.mesh.material = this.materials[this.materialIndex];
-  };
-
-  Tentacle.prototype.updateMesh2 = function() {
-    var i, j, node, ondulationX, ondulationZ, radius, vertice, vertices, _i, _j, _ref, _ref1;
-    vertices = this.mesh.geometry.vertices;
-    for (i = _i = 0, _ref = this.numNodes; _i < _ref; i = _i += 1) {
-      node = this.nodes[i];
-      for (j = _j = 0, _ref1 = this.segmentsX; _j < _ref1; j = _j += 1) {
-        vertice = vertices[i * this.segmentsX + j];
-        vertice.y = i * this.girth;
-        ondulationX = node.x;
-        ondulationZ = node.y;
-        radius = this.headRadius - this.headRadius * (i / this.numNodes) * this.reduction;
-        vertice.x = Math.cos(j / 10 * Math.PI * 2) * radius + node.x;
-        vertice.z = Math.sin(j / 10 * Math.PI * 2) * radius + node.x;
-      }
-    }
-    this.mesh.geometry.verticesNeedUpdate = true;
-    this.mesh.geometry.computeBoundingSphere();
-    this.mesh.geometry.normalsNeedUpdate = true;
-    this.mesh.geometry.computeVertexNormals();
-    this.mesh.geometry.computeFaceNormals();
     this.mesh.material = this.materials[this.materialIndex];
   };
 
